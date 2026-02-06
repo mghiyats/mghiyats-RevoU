@@ -14,7 +14,7 @@ body {
   font-family: comic sans ms;
   position: relative;
   inset: 0;
-  background-image: url("../assets/doodle1.jpg");
+  background-image: url("../assets/Doodle1.jpg");
   background-size: 120%;
   animation: bgMove 30s ease-in-out infinite;
   z-index: -1;
