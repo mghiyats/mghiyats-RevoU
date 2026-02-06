@@ -6,17 +6,18 @@ const deleteAllBtn = document.getElementById("deleteAllBtn");
 const filterBtn = document.getElementById("filterBtn");
 
 let isFiltered = false;
+let asc = true;
 
 addBtn.addEventListener("click", addTask);
 deleteAllBtn.addEventListener("click", deleteAll);
-filterBtn.addEventListener("click", filterTask);
+filterBtn.addEventListener("click", sortByDeadline);
 
 function addTask() {
   const task = taskInput.value.trim();
   const date = dateInput.value;
 
   if (task === "" || date === "") {
-    alert("Namakan Tugas dan Tanggalnya!");
+    alert("Tulis Tugas dan Tentuin Tanggalnya!");
     return;
   }
 
@@ -30,13 +31,16 @@ function addTask() {
   <td class="task">${task}</td>
   <td>${date}</td>
   <td class="status">Belum Selesai</td>
-  <td class="row-actions">
-  <button class="done-btn aksi pending">Selesai</button>
-  <button class="delete-btn">Hapus</button>
-</td>
+  <td>
+    <div class="aksi-cell">
+      <div class="row-actions">
+        <button class="done-btn aksi pending">Selesai</button>
+        <button class="delete-btn">Hapus</button>
+      </div>
+    </div>
+  </td>
 
 `;
-
 
   tr.addEventListener("click", function (e) {
 
@@ -55,7 +59,6 @@ function addTask() {
   doneBtn.classList.toggle("pending", !isDone);
 }
 
-
     if (e.target.classList.contains("delete-btn")) {
       tr.remove();
       checkEmpty();
@@ -69,7 +72,7 @@ function addTask() {
 
 function deleteAll() {
  const confirmDelete = confirm(
-    "Apakah kamu yakin ingin menghapus semua tugas?\nTindakan ini tidak bisa dibatalkan."
+    "Yakin mau hapus semua tugas?\nGk bisa dibatalin loh !."
   );
 
   if (!confirmDelete) return;
@@ -81,23 +84,21 @@ function deleteAll() {
   `;
 }
 
-function filterTask() {
-  const rows = todoList.querySelectorAll("tr");
+function sortByDeadline() {
+  const rows = Array.from(todoList.querySelectorAll("tr"));
+  if (rows.length === 0 || rows[0].classList.contains("empty-row")) return;
 
-  rows.forEach(row => {
-    const status = row.querySelector(".status");
-    if (!status) return;
-
-    row.classList.toggle(
-      "hide-row",
-      !isFiltered && status.innerText !== "Selesai"
-    );
+  rows.sort((a, b) => {
+    const dateA = new Date(a.children[1].innerText);
+    const dateB = new Date(b.children[1].innerText);
+    return asc ? dateA - dateB : dateB - dateA;
   });
 
-  
-  isFiltered = !isFiltered;
-}
+  asc = !asc;
 
+  todoList.innerHTML = "";
+  rows.forEach(row => todoList.appendChild(row));
+}
 
 function checkEmpty() {
   if (todoList.children.length === 0) {

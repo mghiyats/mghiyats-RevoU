@@ -1,25 +1,21 @@
 html, body {
   width: 100%;
   height: 100%;
-}
-
-body {
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  overflow: hidden;
-  font-family: comic sans ms;
-  position: relative;
-  inset: 0;
-  background-image: url("../assets/Doodle1.jpg");
-  background-size: 120%;
-  animation: bgMove 30s ease-in-out infinite;
-  z-index: -1;
 }
 
+body {
+  color: #fff;
+  font-family: comic sans ms;
+  background-image: url("../assets/Doodle1.jpg");
+  background-size: 150%;
+  animation: bgMove 30s ease-in-out infinite;
+  overflow: hidden;
+}
 
 @keyframes bgMove {
   0% {
@@ -33,15 +29,21 @@ body {
   }
 }
 
+.page {
+  max-width: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0px 75px 0px;
+  gap: 25px;
+}
+
 .container {
-  background: rgba(0, 217, 255, 0.25);
+  background: rgba(0, 85, 86, 0.315);
   padding: 25px;
-  width: auto;
+  max-width: 90%;
   border-radius: 25px;
   backdrop-filter: blur(5px);
-
-  max-height: 50%;
-  max-width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -73,6 +75,8 @@ h2 {
 .form button {
   width: 40px;
   border: none;
+  margin-top: -1px;
+  margin-bottom: 2px;
   background: #002f32;
   color: white;
   font-size: 20px;
@@ -80,12 +84,7 @@ h2 {
   border-radius: 3px;
   box-shadow: #000000 1px 3px 5px;
 }
-.form button:hover {
-  background: #ffffff;
-  color: #002e3f;
-  font-size: 25px;
-  box-shadow: #000000 1px 3px 5px;
-}
+
 .form button:active {
   background: #ffffff;
   color: #002e3f;
@@ -115,15 +114,13 @@ h2 {
   height: 35px;
   position: relative;
 }
-#filterBtn:hover {
-  background: #ffffff;
-  color: #64748b;
-}
+
 #filterBtn:active {
   background: #000000;
   color: #00ffd0;
   box-shadow: none;
 }
+
 #filterBtn::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -140,19 +137,13 @@ h2 {
   transition: opacity 0.5s ease;
   transition-delay: 500ms;
 }
-#filterBtn:hover::after{
-  opacity: 1;
-}
 
 #deleteAllBtn {
   background: #ef4444;
   color: white;
   box-shadow: #000000 1px 3px 5px;    
 }
-#deleteAllBtn:hover {
-  background: #ffffff;
-  color: #ef4444;
-}
+
 #deleteAllBtn:active {
   background: #ffffff;
   color: #ef4444;
@@ -165,25 +156,55 @@ h2 {
   border-radius: 20px;
   padding: 15px;
   backdrop-filter: blur(15px);
-  flex: 1;             
+  max-height: 45vh;          
   overflow-y: auto; 
 }
+
 table {
-  min-width: 100%;
+  width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
-th, tr, td {
+
+thead tr {
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+}
+
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+
+th, td {
   padding: 10px;
   text-align: center;
-  border-bottom: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-top: 1px solid #ffffff;
-  border-right: 1px solid #ffffff;
+  vertical-align: middle;
 }
+
 td{
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  min-height: 70px;
+}
+
+.row-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+th:last-child,
+td:last-child {
+  width: 180px;
+  min-height: 80px;
+  vertical-align: middle;
+}
+
+.aksi-cell {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .empty {
@@ -192,9 +213,11 @@ td{
   padding: 10px;
   opacity: 0.5;
 }
+
 .empty-row {
   text-align: center;
 }
+
 .hide-row {
   display: none;
 }
@@ -207,18 +230,10 @@ td{
 .aksi.success {
   background: #ffae00;
 }
-.aksi.success:hover {
-  background: #ffffff;
-  color: #ffae00;
-}
+
 
 .aksi.pending {
   background: #00aa11;
-}
-
-.aksi.pending:hover {
-  background: #ffffff;
-  color: #00aa11;
 }
 
 .done-btn {
@@ -232,10 +247,7 @@ td{
   max-height: 50px;
   box-shadow: #000000 1px 3px 5px;
 }
-.done-btn:hover {
-  background: #ffffff;
-  color: #00aa11;
-} 
+
 .done-btn:active {
   background: #ffffff;
   color: #00aa11;
@@ -252,41 +264,36 @@ td{
   min-width: 60px;
   box-shadow: #000000 1px 3px 5px;
 }
-.delete-btn:hover {
-  background: #ffffff;
-  color: #ef4444;
-} 
+
 .delete-btn:active {
   background: #ffffff;
   color: #ef4444;
   box-shadow: none;
 }
 
-.row-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;       
-}
-
-
 @media (max-width: 767px) {
+
+  .page{
+    justify-content: flex-start;
+    padding: 100px 10px;
+  }
 
   body {
     align-items: flex-start;
-    padding: 20px 0;
+    justify-content: flex-start;
+    background-size: 300%;
   }
 
   .container {
     width: 90%;
     max-width: none;
     max-height: none;
-    padding: 25px;
+    padding: 20px;
+    margin-top: 20px;
   }
 
   .header {
-    padding: 12px;
+    padding: 20px;
   }
 
   h2 {
@@ -294,18 +301,18 @@ td{
   }
 
   .form {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
 
   .form input{
-   max-width: 97%;
+   min-width: 30%;
   }
+
   .form button {
-    width: 50%;
+    width: 13%;
     height: 35px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 3px;
     align-self: center;
     font-size: 30px;
   }
@@ -316,27 +323,36 @@ td{
     height: 30px;
   }
 
-  #filterBtn,
+  #filterBtn {
+    width: 80px;
+    height: 110%;
+  }
+
   #deleteAllBtn {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 110%;
   }
 
   .table-container {
-    padding: 10px;
+    padding: 20px;
   }
 
   table {
     font-size: 13px;
   }
-
+  th:last-child,
+  td:last-child {
+    width: 95px;
+  }
   th, td {
     padding: 6px;
   }
-
+  td{
+    vertical-align: middle;
+  }
   .row-actions {
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
   }
 
   .aksi.pending{
@@ -350,5 +366,20 @@ td{
   .delete-btn{
     min-width: 100px;
   }
+  .footer {
+    margin-bottom: 20px;
+  }
 
 }
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(0, 85, 86, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+

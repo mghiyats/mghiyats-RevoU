@@ -4,41 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List - Ghiyats</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/logoG1.png">
+  <link rel="icon" type="image/png" href="assets/logoG1.png">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h2>Todo List - Ghiyats</h2>
-      <div class="form">
-        <input type="text" id="taskInput" placeholder="Tambahkan tugas..." />
-        <input type="date" id="dateInput" />
-        <button id="addBtn">+</button>
+  <main class="page">
+    <div class="container">
+      <div class="header">
+        <h2>Todo List - Ghiyats</h2>
+        <div class="form">
+          <input type="text" id="taskInput" placeholder="Ketik tugas..." />
+          <input type="date" id="dateInput"/>
+          <button id="addBtn">+</button>
+        </div>
+        <div class="actions">
+          <button id="filterBtn">Filter</button>
+          <button id="deleteAllBtn">Hapus Semua Tugas</button>
+        </div>
       </div>
-      <div class="actions">
-        <button id="filterBtn" data-tooltip="Hanya menampilkan tugas yang sudah selesai">Filter</button>
-        <button id="deleteAllBtn">Hapus Semua Tugas</button>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Tugas</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="todoList">
+            <tr class="empty-row">
+              <td colspan="4" class="empty">Belum Ada Tugas</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Tugas</th>
-          <th>Deadline</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody id="todoList">
-        <tr class="empty-row">
-          <td colspan="4" class="empty">Belum Ada Tugas</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
-  <script src="js/script.js"></script>
+    <footer class="footer">
+      <p>Created by Ghiyats RevoU &copy; 2024</p>
+    </footer>
+  </main>
 </body>
+<script src="js/script.js" defer></script>
 </html>
