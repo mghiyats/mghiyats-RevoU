@@ -94,6 +94,7 @@ function filterTask() {
     );
   });
 
+  
   isFiltered = !isFiltered;
 }
 
