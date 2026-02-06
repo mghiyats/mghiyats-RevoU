@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Todo List - Ghiyats</title>
+ <link rel="icon" type="image/png" sizes="32x32" href="logoG1.png">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Todo List - Ghiyats</h2>
+      <div class="form">
+        <input type="text" id="taskInput" placeholder="Tambahkan tugas..." />
+        <input type="date" id="dateInput" />
+        <button id="addBtn">+</button>
+      </div>
+      <div class="actions">
+        <button id="filterBtn" data-tooltip="Hanya menampilkan tugas yang sudah selesai">Filter</button>
+        <button id="deleteAllBtn">Hapus Semua Tugas</button>
+      </div>
+    </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Tugas</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="todoList">
+        <tr>
+          <td colspan="4" class="empty">Belum Ada Tugas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>

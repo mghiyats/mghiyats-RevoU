@@ -1,0 +1,273 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+  font-family: comic sans ms;
+  position: relative;
+  inset: 0;
+  background-image: url("../assets/doodle1.jpg");
+  background-size: 120%;
+  animation: bgMove 30s ease-in-out infinite;
+  z-index: -1;
+}
+
+
+@keyframes bgMove {
+  0% {
+    background-position: center 0%;
+  }
+  50% {
+    background-position: center 100%;
+  }
+  100% {
+    background-position: center 00%;
+  }
+}
+
+.container {
+  background: rgba(0, 217, 255, 0.25);
+  padding: 25px;
+  width: auto;
+  border-radius: 25px;
+  backdrop-filter: blur(5px);
+
+  max-height: 50%;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  background: rgba(131, 131, 131, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 15px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+}
+
+.form input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 3px;
+  border: none;
+}
+
+.form button {
+  width: 40px;
+  border: none;
+  background: #002f32;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: #000000 1px 3px 5px;
+}
+.form button:hover {
+  background: #ffffff;
+  color: #002e3f;
+  font-size: 25px;
+  box-shadow: #000000 1px 3px 5px;
+}
+.form button:active {
+  background: #ffffff;
+  color: #002e3f;
+  font-size: 25px;
+  box-shadow: none;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px 0px 0px;
+
+}
+
+.actions button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#filterBtn {
+  background: #64748b;
+  color: white;
+  box-shadow: #000000 1px 3px 5px;
+  width: 75px;
+  height: 35px;
+  position: relative;
+}
+#filterBtn:hover {
+  background: #ffffff;
+  color: #64748b;
+}
+#filterBtn:active {
+  background: #000000;
+  color: #00ffd0;
+  box-shadow: none;
+}
+#filterBtn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  transition-delay: 500ms;
+}
+#filterBtn:hover::after{
+  opacity: 1;
+}
+
+#deleteAllBtn {
+  background: #ef4444;
+  color: white;
+  box-shadow: #000000 1px 3px 5px;    
+}
+#deleteAllBtn:hover {
+  background: #ffffff;
+  color: #ef4444;
+}
+#deleteAllBtn:active {
+  background: #ffffff;
+  color: #ef4444;
+  box-shadow: none;
+}
+
+.table-container {
+  background: rgba(131, 131, 131, 0.25);
+  margin-top: 25px;
+  border-radius: 20px;
+  padding: 15px;
+  backdrop-filter: blur(15px);
+  flex: 1;             
+  overflow-y: auto; 
+}
+table {
+  min-width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+th, tr, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+td{
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.empty {
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  opacity: 0.5;
+}
+.empty-row {
+  text-align: center;
+}
+.hide-row {
+  display: none;
+}
+
+.done {
+  text-decoration: line-through;
+  color: #00aa11;
+}
+
+.aksi.success {
+  background: #ffae00;
+}
+.aksi.success:hover {
+  background: #ffffff;
+  color: #ffae00;
+}
+
+.aksi.pending {
+  background: #00aa11;
+}
+
+.aksi.pending:hover {
+  background: #ffffff;
+  color: #00aa11;
+}
+
+.done-btn {
+  background: #00aa11;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  min-height: 30px;
+  max-height: 50px;
+  box-shadow: #000000 1px 3px 5px;
+}
+.done-btn:hover {
+  background: #ffffff;
+  color: #00aa11;
+} 
+.done-btn:active {
+  background: #ffffff;
+  color: #00aa11;
+  box-shadow: none;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  min-height: 30px;
+  min-width: 60px;
+  box-shadow: #000000 1px 3px 5px;
+}
+.delete-btn:hover {
+  background: #ffffff;
+  color: #ef4444;
+} 
+.delete-btn:active {
+  background: #ffffff;
+  color: #ef4444;
+  box-shadow: none;
+}
+
+.row-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;       
+}
+
+
