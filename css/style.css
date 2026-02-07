@@ -30,7 +30,7 @@ body {
 }
 
 .page {
-  max-width: 80vh;
+  max-width: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,7 @@ body {
 .container {
   background: rgba(0, 85, 86, 0.315);
   padding: 25px;
-  max-width: 90%;
+  max-width: 100%;
   border-radius: 25px;
   backdrop-filter: blur(5px);
   display: flex;
